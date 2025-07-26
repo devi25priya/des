@@ -1,0 +1,38 @@
+ Game of hanoi program in C++
+
+
+%%writefile lab4_hanoi.cpp
+#include <iostream>
+using namespace std;
+
+void hanoi(int n, char source, char destination, char auxiliary) {
+    if (n == 1) {
+        cout << "Move disk 1 from " << source << " to " << destination << endl;
+        return;
+    }
+    hanoi(n - 1, source, auxiliary, destination);
+    cout << "Move disk " << n << " from " << source << " to " << destination << endl;
+    hanoi(n - 1, auxiliary, destination, source);
+}
+
+int main() {
+    int n = 3;
+    cout << "🧪 Tower of Hanoi (C++) - Steps for " << n << " disks:" << endl << endl;
+    hanoi(n, 'A', 'C', 'B');
+    return 0;
+}
+
+_____________________________
+!g++ lab4_hanoi.cpp -o lab4_cpp && ./lab4_cpp
+
+__________________________________________________________OUTPUT__________________
+🧪 Tower of Hanoi (C++) - Steps for 3 disks:
+
+Move disk 1 from A to C
+Move disk 2 from A to B
+Move disk 1 from C to B
+Move disk 3 from A to C
+Move disk 1 from B to A
+Move disk 2 from B to C
+Move disk 1 from A to C
+================================================================
